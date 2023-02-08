@@ -35,26 +35,49 @@ def comp_player(game_type):
     return reply
 
 def win_checker(player1,player2,game_type):
+    """
+
+    :param player1: one of the positions (1-3 or 1-5)
+    :param player2: one of the positions (1-3 or 1-5)
+    :param game_type:
+    1 - Classical RPS
+    2 - Rock-Paper-Scissors-Spock-Lizard
+    3 - Rock-Paper-Scissors-Fire-Water
+    :return: 0 - tie,
+    1 = player 1 wins,
+     2 = player 2 wins
+     None = if data is incorrect
+
+    """
 
     if game_type == 1:
-        scoreboard = [(1,2,3),
-                      (4,5,6),
-                      (7,8,9)
+        ### 1-Rock, 2-Paper, 3-Scissors in rows and columns
+                    #rock,paper,scissors
+        scoreboard = [(0,   1,     2), #rock
+                      (2,   0,     1), #paper
+                      (1,   2,     0) #scissors
         ]
     elif game_type == 2:
-        scoreboard = [(1,2,3,4,5),
-                      (6,7,8,9,10),
-                      (11,12,13,14,15),
-                      (16,17,18,19,20),
-                      (21,22,23,24,25)
+                    #rock,paper,scissors,spock,lizard
+        scoreboard = [(0,   1,      2,     1,     2), #rock
+                      (2,   0,      1,     2,     1), #paper
+                      (1,   2,      0,     1,     2), #scissors
+                      (2,   1,      2,     0,     1), #spock
+                      (1,   2,      1,     2,     0) #lizard
         ]
     elif game_type == 3:
-        scoreboard = [(1,2,3,4,5),
-                      (6,7,8,9,10),
-                      (11,12,13,14,15),
-                      (16,17,18,19,20),
-                      (21,22,23,24,25)
+                    #rock,paper,scissors,fire,  water
+        scoreboard = [(0,   1,      2,     1,     2), #rock
+                      (2,   0,      1,     1,     2), #paper
+                      (1,   2,      0,     1,     2), #scissors
+                      (2,   2,      2,     0,     1), #fire
+                      (1,   1,      1,     2,     0) #Water
         ]
+    else:
+        print(f"Wrong game type! you've entered {game_type}")
+        return None
+    result = scoreboard[player2-1][player1-1]
+    return result
 
 
 
@@ -64,6 +87,9 @@ def win_checker(player1,player2,game_type):
 if __name__ == '__main__':
     x = comp_player(game_type=7)
     print(x)
+    y = print(win_checker(game_type=1, player1=1, player2=3)) #player1 = paper,2, player2 = scissors, 3
+    print(y)
+
 
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
