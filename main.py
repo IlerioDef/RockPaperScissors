@@ -34,8 +34,30 @@ def comp_player(game_type):
         print(screener(f"Wrong data type! Choose 1-3"))
     return reply
 
-win_checker(player1,player2,game_type):
-if game_type == 1:
+def win_checker(player1,player2,game_type):
+
+    if game_type == 1:
+        scoreboard = [(1,2,3),
+                      (4,5,6),
+                      (7,8,9)
+        ]
+    elif game_type == 2:
+        scoreboard = [(1,2,3,4,5),
+                      (6,7,8,9,10),
+                      (11,12,13,14,15),
+                      (16,17,18,19,20),
+                      (21,22,23,24,25)
+        ]
+    elif game_type == 3:
+        scoreboard = [(1,2,3,4,5),
+                      (6,7,8,9,10),
+                      (11,12,13,14,15),
+                      (16,17,18,19,20),
+                      (21,22,23,24,25)
+        ]
+
+
+
 
 
 # Press the green button in the gutter to run the script.
