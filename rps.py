@@ -2,7 +2,7 @@ import sys
 import time
 from random import randrange
 
-##test
+##test test
 from colorama import init
 
 init(strip=not sys.stdout.isatty())  # strip colors if stdout is redirected

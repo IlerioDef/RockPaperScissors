@@ -1,4 +1,4 @@
-# This is a sample Python script. test
+# This is a sample Python script.
 
 from rps import game_logo, screener, delimeter, show_board
 
