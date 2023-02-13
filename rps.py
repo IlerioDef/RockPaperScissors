@@ -62,10 +62,10 @@ def game_logo(game_type=1):
 
 def show_board(score_board):
 
-    delimeter()
+    delimiter()
     for k, v in score_board.items():
         print(screener(f"\t{k}                \t{v}\t"))
-    delimeter()
+    delimiter()
 
 
 
@@ -167,7 +167,7 @@ def win_checker(player1, player2, game_type):
     return result
 
 
-def delimeter():
+def delimiter():
         for x in range(3):
             print(screener("  "))
         return

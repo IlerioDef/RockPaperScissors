@@ -1,29 +1,29 @@
 
-from rps import game_logo, screener, delimeter, show_board, game_options, comp_player, win_checker, print_image
+from rps import game_logo, screener, delimiter, show_board, game_options, comp_player, win_checker, print_image
 
 
 if __name__ == '__main__':
     print(screener("  Hello, stranger.  "))
     print(screener("  Please, enter your name  "))
-    delimeter()
+    delimiter()
     name = input("Enter your name:\n")
     score_board = {name:0, "Computer":0}
-    delimeter()
+    delimiter()
     while True:
         print(screener(f"  Hello, {name}.  "))
-        delimeter()
+        delimiter()
         print(screener("  What game would you like to play?  "))
         print(screener("  1 - Classical RPS  ---"))
         print(screener("  2 - RPS-Spock-Lizard  "))
         print(screener("  3 - RPS-Fire-Water  --"))
         print(screener("  other - to quit  -----"))
-        delimeter()
+        delimiter()
         game_type = int(input("Game type is: \n"))
         if game_type in {1,2,3}:
-                delimeter()
+                delimiter()
                 game_logo(game_type)
         else:
-                delimeter()
+                delimiter()
                 break
                 print(screener("Thank you for playing"))
 
