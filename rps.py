@@ -7,7 +7,7 @@ from colorama import init
 init(strip=not sys.stdout.isatty())  # strip colors if stdout is redirected
 from pyfiglet import figlet_format
 
-game_logo = {
+game_options = {
         1: (
             "Rock!",
             "Paper!",
@@ -50,13 +50,13 @@ def game_logo(game_type=1):
        :return: print iteration on the game type
     """
 
-    for k,v in game_logo.items():
+    for k,v in game_options.items():
            try:
                   if game_type == k:
                          return [print_image(x) for x in v]
 
            except:
-                  return [print_image(x) for x in game_logo[1]]
+                  return [print_image(x) for x in game_options[1]]
 
 
 
