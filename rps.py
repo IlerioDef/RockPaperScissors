@@ -33,23 +33,29 @@ game_options = {
 
 
 def print_image(text):
+
+    # TODO: писать "based on" со ссылкой на гитхаб не надо, видно же что используется функция из библиотеки
     """
        Based on https://github.com/pwaller/pyfiglet
 
        :param text: if not string, - converts value to string and processes it into ASCII-art.
        :return: ASCII-art printed text
        """
+    # TODO: возвращать результат print не нужно
     result = print(figlet_format(str(text), font='graceful'))
     return result
 
 
+# TODO: дефолтное значение тут не нужно
 def game_logo(game_type=1):
+    # TODO: Неописательное описание
     """
        Simple logo creator
        :param game_type: one of three game types
+       # TODO: Ну, на самом деле эта функция ничего не возвращает, поэтому :return: тут не нужен
        :return: print iteration on the game type
     """
-
+# TODO: функция делает очень много ненужного
     for k,v in game_options.items():
            try:
                   if game_type == k:
@@ -64,6 +70,7 @@ def show_board(score_board):
 
     delimiter()
     for k, v in score_board.items():
+        # TODO: табуляция ломает скорборд
         print(screener(f"\t{k}                \t{v}\t"))
     delimiter()
 
@@ -71,7 +78,7 @@ def show_board(score_board):
 
 
 
-
+# TODO: вот это явно надо было удолить
 if __name__ == '__main__':
     # rock_image = print_image("Rock!")
     # paper_image = print_image("Paper!")
@@ -84,13 +91,19 @@ if __name__ == '__main__':
     game_logo(2)
 
 
+# TODO: параметр screen_limit не нужен, он нигде не используется
 def screener(data, screen_limit=40):
     """
+    # TODO: any type of data это конечно неправда
     :param data: any type of data that will be converted to string and returned
     :param screen_limit: the width of the screen so every line will look consistently. Default value = 40
     :return: type: str()
     """
+        # TODO: функция с багами
+    # TODO: вся функция заменяется на одну строку
+    # return f"{data:-^{width}}"
     margin = str("-" * int((screen_limit - len(data) / 2)))
+    # TODO: ???
     time.sleep(0.01)
     if len(data) <= screen_limit:
         string = (margin + str(data) + margin)
@@ -110,8 +123,12 @@ def comp_player(game_type):
     """
 
     reply = None
+    # TODO: вместо условий и неявной зависимости лучше было бы передавать в функцию список опций
+    # TODO: передавать в эту функцию количество опций и заменить дереве if-else на один вызов
     if game_type == 1:
         reply = randrange(1, 4, 1)
+
+    # TODO: баг, крашится при выборе 2-го типа игры
     elif game_type == 2 | 3:
         reply = randrange(1, 6, 1)
     else:
@@ -121,6 +138,7 @@ def comp_player(game_type):
 
 def win_checker(player1, player2, game_type):
     """
+    # TODO: вот тут очень пригодилось бы описание алгоритма
     :param player1: one of the positions (1-3 or 1-5)
     :param player2: one of the positions (1-3 or 1-5)
     :param game_type:
@@ -133,6 +151,8 @@ def win_checker(player1, player2, game_type):
      None = if data is incorrect
     """
     try:
+              # TODO: вынести scoreboard в словарь как с game_options
+        # TODO: кстати, а почему это называется scoreboard?
         if game_type == 1:
             # 1-Rock, 2-Paper, 3-Scissors in rows and columns
             # rock,paper,scissors
