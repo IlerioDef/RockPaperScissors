@@ -5,9 +5,10 @@ from random import randrange
 from colorama import init
 
 init(strip=not sys.stdout.isatty())  # strip colors if stdout is redirected
+
 from pyfiglet import figlet_format
 
-game_options = {
+GAME_OPTIONS = {
         1: (
             "Rock!",
             "Paper!",
@@ -32,37 +33,37 @@ game_options = {
 
 
 
+def input_validator(text):
+    if type(text) != str():
+        raise ValueError
+    if len(text) == 0:
+        raise ValueError
 def print_image(text):
 
-    # TODO: писать "based on" со ссылкой на гитхаб не надо, видно же что используется функция из библиотеки
+    # TODO: писать "based on" со ссылкой на гитхаб не надо, видно же что используется функция из библиотеки ✅
     """
-       Based on https://github.com/pwaller/pyfiglet
-
-       :param text: if not string, - converts value to string and processes it into ASCII-art.
-       :return: ASCII-art printed text
+       :param str
+       :return: None
        """
-    # TODO: возвращать результат print не нужно
-    result = print(figlet_format(str(text), font='graceful'))
-    return result
+    # TODO: возвращать результат print не нужно ✅
+    print(figlet_format(str(text), font='graceful'))
 
 
-# TODO: дефолтное значение тут не нужно
-def game_logo(game_type=1):
+
+# TODO: дефолтное значение тут не нужно ✅
+def game_logo(game_type):
     # TODO: Неописательное описание
     """
        Simple logo creator
        :param game_type: one of three game types
-       # TODO: Ну, на самом деле эта функция ничего не возвращает, поэтому :return: тут не нужен
-       :return: print iteration on the game type
+       # TODO: Ну, на самом деле эта функция ничего не возвращает, поэтому :return: тут не нужен ✅
+       :return: None
     """
-# TODO: функция делает очень много ненужного
-    for k,v in game_options.items():
-           try:
-                  if game_type == k:
-                         return [print_image(x) for x in v]
-
-           except:
-                  return [print_image(x) for x in game_options[1]]
+# TODO: функция делает очень много ненужного ✅
+    if game_type in GAME_OPTIONS:
+        [print_image(x) for x in GAME_OPTIONS[game_type]]
+    else:
+        raise ValueError
 
 
 
@@ -70,32 +71,22 @@ def show_board(score_board):
 
     delimiter()
     for k, v in score_board.items():
-        # TODO: табуляция ломает скорборд
-        print(screener(f"\t{k}                \t{v}\t"))
+        # TODO: табуляция ломает скорборд ✅
+        print(screener(f"  {k}  --------  {v}  "))
     delimiter()
 
 
 
 
 
-# TODO: вот это явно надо было удолить
-if __name__ == '__main__':
-    # rock_image = print_image("Rock!")
-    # paper_image = print_image("Paper!")
-    # scissors_image = print_image("Scissors!")
-    # lizard_image = print_image("Lizard!")
-    # spock_image = print_image("Spock!")
-    # fire_image = print_image("Fire!")
-    # water_image = print_image("Water!")
-
-    game_logo(2)
 
 
-# TODO: параметр screen_limit не нужен, он нигде не используется
-def screener(data, screen_limit=40):
+# TODO: параметр screen_limit не нужен, он нигде не используется ✅
+def screener(data):
+
     """
     # TODO: any type of data это конечно неправда
-    :param data: any type of data that will be converted to string and returned
+    :param data: string data
     :param screen_limit: the width of the screen so every line will look consistently. Default value = 40
     :return: type: str()
     """
@@ -151,7 +142,7 @@ def win_checker(player1, player2, game_type):
      None = if data is incorrect
     """
     try:
-              # TODO: вынести scoreboard в словарь как с game_options
+              # TODO: вынести scoreboard в словарь как с GAME_OPTIONS
         # TODO: кстати, а почему это называется scoreboard?
         if game_type == 1:
             # 1-Rock, 2-Paper, 3-Scissors in rows and columns

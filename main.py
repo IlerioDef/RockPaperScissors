@@ -1,26 +1,44 @@
-from rps import(
+from rps import (
     game_logo,
     screener,
     delimiter,
     show_board,
-    game_options,
+    GAME_OPTIONS,
     comp_player,
     win_checker,
-    print_image
+    print_image, input_validator
 )
 
 from rich import print
+from rich.console import Console
+from rich.markdown import Markdown
 
+console = Console()
 
 if __name__ == '__main__':
-    print(screener("  Hello, stranger.  "))
+    MARKDOWN = """
+    # This is an h1
+    
+    Rich can do a pretty *decent* job of rendering markdown.
+    
+    1. This is a list item
+    2. This is another list item
+    """
+
+
+    console = Console()
+    md = Markdown(MARKDOWN)
+    console.print(md)
+
+    console.print("  Hello, stranger", style="bold red")
     print(screener("  Please, enter your name  "))
     delimiter()
     # TODO: можно ввести пустое значение
-    name = input("Enter your name:\n")
+    name = input_validator(input("Enter your name:\n"))
     score_board = {name: 0, "Computer": 0}
     delimiter()
     while True:
+
         print(screener(f"  Hello, {name}.  "))
         delimiter()
         print(screener("  What game would you like to play?  "))
@@ -30,8 +48,8 @@ if __name__ == '__main__':
         print(screener("  other - to quit  -----"))
         # TODO: позасрал все своими принтами!
         delimiter()
-        # TODO: нет валидации ввода
-        game_type = int(input("Game type is: \n"))
+        # TODO: нет валидации ввода ✅
+        game_type = int(input_validator(input("Game type is: \n")))
         if game_type in {1, 2, 3}:
             delimiter()
             game_logo(game_type)
@@ -51,7 +69,7 @@ if __name__ == '__main__':
             # TODO: вынести в функцию
             # TODO: использовать enumerate
             # TODO: нормально назвать переменные
-            for x in game_options[game_type]:
+            for x in GAME_OPTIONS[game_type]:
                 choices_available[n] = x
                 return_value = f" {n} - {x}  "
                 print(screener(return_value))
@@ -60,7 +78,7 @@ if __name__ == '__main__':
             try:
                 # TODO: не надо так много заворачивать в try/except
                 choice = int(input("and your choice is:  "))
-                if 1 <= choice <= len(game_options[game_type]):
+                if 1 <= choice <= len(GAME_OPTIONS[game_type]):
                     comp_choice = comp_player(game_type)
                     x = win_checker(player1=choice, player2=comp_choice, game_type=game_type)
                     print(f"your choice was:")
