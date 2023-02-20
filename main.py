@@ -1,5 +1,5 @@
-
 from rps import game_logo, screener, delimiter, show_board, game_options, comp_player, win_checker, print_image
+from rich import print
 
 
 if __name__ == '__main__':
@@ -7,7 +7,7 @@ if __name__ == '__main__':
     print(screener("  Please, enter your name  "))
     delimiter()
     name = input("Enter your name:\n")
-    score_board = {name:0, "Computer":0}
+    score_board = {name: 0, "Computer": 0}
     delimiter()
     while True:
         print(screener(f"  Hello, {name}.  "))
@@ -19,14 +19,13 @@ if __name__ == '__main__':
         print(screener("  other - to quit  -----"))
         delimiter()
         game_type = int(input("Game type is: \n"))
-        if game_type in {1,2,3}:
-                delimiter()
-                game_logo(game_type)
+        if game_type in {1, 2, 3}:
+            delimiter()
+            game_logo(game_type)
         else:
-                delimiter()
-                break
-                print(screener("Thank you for playing"))
-
+            delimiter()
+            break
+            print(screener("Thank you for playing"))
 
         while True:
 
@@ -67,11 +66,3 @@ if __name__ == '__main__':
             except ValueError:
                 print("Going one level up!")
                 break
-
-
-
-
-
-
-
-
