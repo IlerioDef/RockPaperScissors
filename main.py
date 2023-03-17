@@ -8,44 +8,20 @@ from rps import (
     win_checker,
     print_image, input_validator
 )
-
-from rich import print
-from rich.console import Console
-from rich.markdown import Markdown
-
-console = Console()
-
 if __name__ == '__main__':
-    MARKDOWN = """
-    # This is an h1
-    
-    Rich can do a pretty *decent* job of rendering markdown.
-    
-    1. This is a list item
-    2. This is another list item
-    """
-
-
-    console = Console()
-    md = Markdown(MARKDOWN)
-    console.print(md)
-
-    console.print("  Hello, stranger", style="bold red")
+    print(screener("Hello, stranger"))
     print(screener("  Please, enter your name  "))
     delimiter()
-    # TODO: можно ввести пустое значение
     name = input_validator(input("Enter your name:\n"))
     score_board = {name: 0, "Computer": 0}
     delimiter()
     while True:
-
         print(screener(f"  Hello, {name}.  "))
-        delimiter()
         print(screener("  What game would you like to play?  "))
-        print(screener("  1 - Classical RPS  ---"))
-        print(screener("  2 - RPS-Spock-Lizard  "))
-        print(screener("  3 - RPS-Fire-Water  --"))
-        print(screener("  other - to quit  -----"))
+        print([f"{k} - {v}" for k, v in GAME_OPTIONS.items()])
+        print(screener("2 - RPS-Spock-Lizard"))
+        print(screener("3 - RPS-Fire-Water"))
+        print(screener("other - to quit  -----"))
         # TODO: позасрал все своими принтами!
         delimiter()
         # TODO: нет валидации ввода ✅

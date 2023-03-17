@@ -1,7 +1,6 @@
 import sys
 import time
 from random import randrange
-
 from colorama import init
 
 init(strip=not sys.stdout.isatty())  # strip colors if stdout is redirected
@@ -33,19 +32,17 @@ GAME_OPTIONS = {
 
 
 
-def input_validator(text):
-    if type(text) != str():
-        raise ValueError
-    if len(text) == 0:
+def input_validator(text:str) -> str:
+    if len(text) != 0:
+        return text
+    else:
+        "Sorry, you've entered empty data. Program will exit"
         raise ValueError
 def print_image(text):
-
-    # TODO: писать "based on" со ссылкой на гитхаб не надо, видно же что используется функция из библиотеки ✅
     """
        :param str
        :return: None
        """
-    # TODO: возвращать результат print не нужно ✅
     print(figlet_format(str(text), font='graceful'))
 
 
@@ -82,26 +79,27 @@ def show_board(score_board):
 
 
 # TODO: параметр screen_limit не нужен, он нигде не используется ✅
-def screener(data):
-
-    """
-    # TODO: any type of data это конечно неправда
-    :param data: string data
-    :param screen_limit: the width of the screen so every line will look consistently. Default value = 40
-    :return: type: str()
-    """
-        # TODO: функция с багами
-    # TODO: вся функция заменяется на одну строку
-    # return f"{data:-^{width}}"
-    margin = str("-" * int((screen_limit - len(data) / 2)))
-    # TODO: ???
-    time.sleep(0.01)
-    if len(data) <= screen_limit:
-        string = (margin + str(data) + margin)
-    else:
-        string = margin + str(data[:screen_limit]) + margin
-
-    return string
+def screener(data, screen_limit=10):
+    #
+    # """
+    # # TODO: any type of data это конечно неправда
+    # :param data: string data
+    # :param screen_limit: the width of the screen so every line will look consistently. Default value = 40
+    # :return: type: str()
+    # """
+    #     # TODO: функция с багами
+    # # TODO: вся функция заменяется на одну строку
+    # # return f"{data:-^{width}}"
+    # margin = str("-" * int((screen_limit - len(data) / 2)))
+    # # TODO: ???
+    # time.sleep(0.01)
+    # if len(data) <= screen_limit:
+    #     string = (margin + str(data) + margin)
+    # else:
+    #     string = margin + str(data[:screen_limit]) + margin
+    #
+    # return string
+    return data
 
 
 def comp_player(game_type):
