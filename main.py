@@ -8,37 +8,40 @@ from rps import (
     win_checker,
     print_image, input_validator
 )
+
 if __name__ == '__main__':
-    print(screener("Hello, stranger"))
-    print(screener("  Please, enter your name  "))
+    print("Hello, stranger")
+    print("  Please, enter your name  ")
     delimiter()
     name = input_validator(input("Enter your name:\n"))
     score_board = {name: 0, "Computer": 0}
     delimiter()
+
+    # Main menu
     while True:
-        print(screener(f"  Hello, {name}.  "))
-        print(screener("  What game would you like to play?  "))
-        print([f"{k} - {v}" for k, v in GAME_OPTIONS.items()])
-        print(screener("2 - RPS-Spock-Lizard"))
-        print(screener("3 - RPS-Fire-Water"))
-        print(screener("other - to quit  -----"))
-        # TODO: позасрал все своими принтами!
+        print(f"  Hello, {name}.  ")
+        print("  What game would you like to play?  ")
+        for k, v in enumerate(GAME_OPTIONS.values(), start=1):
+            v = " ".join(v)
+            print(f"{k} - {v}")
+        print("Or any other key to quit.")
+
         delimiter()
-        # TODO: нет валидации ввода ✅
+
+    # Game starts
+
         game_type = int(input_validator(input("Game type is: \n")))
-        if game_type in {1, 2, 3}:
+        if game_type in GAME_OPTIONS:
             delimiter()
             game_logo(game_type)
         else:
             delimiter()
+            print("Thank you for playing")
             break
-            print(screener("Thank you for playing"))
 
         while True:
-
             show_board(score_board)
-
-            print(screener('make your choice:'))
+            print('make your choice:')
 
             choices_available = {}
             n = 1
@@ -47,8 +50,8 @@ if __name__ == '__main__':
             # TODO: нормально назвать переменные
             for x in GAME_OPTIONS[game_type]:
                 choices_available[n] = x
-                return_value = f" {n} - {x}  "
-                print(screener(return_value))
+                return_value = f"{n} - {x}"
+                print(return_value)
                 n += 1
 
             try:
@@ -75,6 +78,5 @@ if __name__ == '__main__':
                 else:
                     raise ValueError
             except ValueError:
-                # TODO: я сначала подумал, что это про уровни в игре какие-то :)
-                print("Going one level up!")
+                print("Going to main menu")
                 break
