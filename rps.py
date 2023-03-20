@@ -38,7 +38,7 @@ def input_validator(text:str) -> str:
     else:
         "Sorry, you've entered empty data. Program will exit"
         raise ValueError
-def print_image(text):
+def print_image(text:str) -> None:
     """
        :param str
        :return: None
@@ -48,7 +48,7 @@ def print_image(text):
 
 
 # TODO: дефолтное значение тут не нужно ✅
-def game_logo(game_type):
+def game_logo(game_type:int) -> None:
     # TODO: Неописательное описание
     """
        Simple logo creator
@@ -64,12 +64,12 @@ def game_logo(game_type):
 
 
 
-def show_board(score_board):
+def show_board(score_board) -> None:
 
     delimiter()
     for k, v in score_board.items():
         # TODO: табуляция ломает скорборд ✅
-        print(screener(f"  {k}  --------  {v}  "))
+        print(screener(f"{k}--------{v}"))
     delimiter()
 
 
